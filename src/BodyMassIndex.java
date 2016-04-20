@@ -1,5 +1,4 @@
 /**
- * Created by Kemp on 4/19/2016.
  * Code by Srikar Devarakonda
  * Body Mass Index: Input height in feet and inches.Input weight in pounds.
    Return BMI value andcategory:
