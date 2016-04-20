@@ -23,7 +23,7 @@ public class Launcher {
 
         System.out.println("------------------------");
 
-        Result resultEmailVerifier = JUnitCore.runClasses(TestBodyMassIndexTests.class);
+        Result resultEmailVerifier = JUnitCore.runClasses(TestEmailVerifierTests.class);
         for(Failure failure : resultEmailVerifier.getFailures())
             System.out.println(failure.toString());
         System.out.println("EmailVerifierTests: "+resultEmailVerifier.wasSuccessful());
