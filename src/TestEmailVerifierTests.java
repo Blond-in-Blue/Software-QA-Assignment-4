@@ -62,4 +62,11 @@ public class TestEmailVerifierTests extends TestCase {
         assertEquals(verified, myEmailVerifier.verifyEmailString());
     }
 
+    public void testDotBeforeAt(){
+        String email = "a.wg@gmal.com";
+        EmailVerifier myEmailVerifier = new EmailVerifier(email);
+        Boolean verified = true;
+        assertEquals(verified, myEmailVerifier.verifyEmailString());
+    }
+
 }
