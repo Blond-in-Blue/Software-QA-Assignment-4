@@ -43,5 +43,9 @@ public class TestBodyMassIndexTests
    {
        assertEquals("Your weight is Normal.\nSuggestion : Continue your Daily Routine.", BodyMassIndex.BmiDetails(22));
    }
+    @Test
+    public void negativeWeightValue(){
+        assertEquals(null,BodyMassIndex.BmiDetails(-1));
+    }
    
 }
