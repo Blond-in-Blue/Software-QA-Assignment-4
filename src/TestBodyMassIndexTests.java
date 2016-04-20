@@ -34,7 +34,7 @@ public class TestBodyMassIndexTests
        assertEquals("You are Overweight.\nSuggestion : Walk Daily.", BodyMassIndex.BmiDetails(28));
    }
    @Test
-   public void BMI_obesel ()
+   public void BMI_obese ()
    {
        assertEquals("You are Obese.\nSuggestion : Workout Daily.", BodyMassIndex.BmiDetails(40));
    }

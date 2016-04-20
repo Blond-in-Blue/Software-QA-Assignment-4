@@ -30,7 +30,7 @@ public class Launcher {
 
         System.out.println("------------------------");
 
-        Result resultRetirement = JUnitCore.runClasses(TestBodyMassIndexTests.class);
+        Result resultRetirement = JUnitCore.runClasses(TestRetirementTests.class);
         for(Failure failure : resultRetirement.getFailures())
             System.out.println(failure.toString());
         System.out.println("RetirementTests: "+resultRetirement.wasSuccessful());
