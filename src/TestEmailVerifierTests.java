@@ -55,4 +55,11 @@ public class TestEmailVerifierTests extends TestCase {
         assertEquals(verified, myEmailVerifier.verifyEmailString());
     }
 
+    public void testSymbolsInSite() {
+        String email = "awg@gma!l.com";
+        EmailVerifier myEmailVerifier = new EmailVerifier(email);
+        Boolean verified = true;
+        assertEquals(verified, myEmailVerifier.verifyEmailString());
+    }
+
 }
