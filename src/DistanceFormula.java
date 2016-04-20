@@ -19,6 +19,7 @@ public class DistanceFormula {
         this.y2 = y2;
     }
 
+    /**Find the distance between two (x,y) points*/
     public double findDistanceBetweenPoints(){
         double differenceBetweenXValues = findDifferenceBetweenTwoNumbers(this.x2,this.x1);
         double differenceBetweenYValues = findDifferenceBetweenTwoNumbers(this.y2,this.y1);
@@ -28,14 +29,17 @@ public class DistanceFormula {
         return Math.sqrt(sumOfXYValueSquares);
     }
 
+    /**Subtract two numbers and return difference between them*/
     public static double findDifferenceBetweenTwoNumbers(double value1, double value2){
         return Math.abs(value1 - value2);
     }
 
+    /**Square a number and return the result*/
     public static double findSquareOfNumber(double value){
         return value * value;
     }
 
+    /**Add two numbers and return the result*/
     public static double findSumOfTwoNumbers(double value1, double value2){
         return value1 + value2;
     }
