@@ -45,7 +45,7 @@ public class BodyMassIndex {
     }
     static String BmiDetails(double bmi)
     {
-      if (bmi <= 18.5) 
+      if (bmi <= 18.5 && bmi >=0) 
       {
         return "You are Underweight.\nSuggestion : Gain Weight.";
       } 
@@ -61,6 +61,10 @@ public class BodyMassIndex {
       {
         return "You are Obese.\nSuggestion : Workout Daily.";
       }
+      else if (bmi < 0)
+      {
+        return "Invalid Input.BMI Cannot be Negetive.";
+    }
       else 
       return null;
     }
