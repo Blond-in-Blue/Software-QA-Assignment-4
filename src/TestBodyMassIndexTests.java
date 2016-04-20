@@ -1,5 +1,6 @@
 /**
  * Test Cases by Srikar Devarakonda
+ * Unit Test Cases for different scenario while calculating Body Mass Index
  */
 import static org.junit.Assert.*;
 import org.junit.*;
