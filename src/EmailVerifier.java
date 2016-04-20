@@ -26,6 +26,8 @@ public class EmailVerifier {
             {return false;}
         else if(alphabetic.matcher(domain).find())                      //Domain contains special characters
             {return false;}
+        else if((atIndex + 1) == dotIndex)                              //No site String between '@' and '.'
+            {return false;}
         else
             {return true;}
     }

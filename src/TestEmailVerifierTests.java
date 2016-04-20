@@ -48,4 +48,11 @@ public class TestEmailVerifierTests extends TestCase {
         assertEquals(verified, myEmailVerifier.verifyEmailString());
     }
 
+    public void testNoCharBetweenAtAndPeriod() {
+        String email = "awg@.com";
+        EmailVerifier myEmailVerifier = new EmailVerifier(email);
+        Boolean verified = false;
+        assertEquals(verified, myEmailVerifier.verifyEmailString());
+    }
+
 }
