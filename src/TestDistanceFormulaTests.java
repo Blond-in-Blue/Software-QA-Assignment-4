@@ -91,4 +91,23 @@ public class TestDistanceFormulaTests extends TestCase {
         assertEquals(sum,DistanceFormula.findSumOfTwoNumbers(value1,value2));
     }
 
+    public void testDifferenceBetweenNumberAndZero(){
+        double value1 = 5;
+        double value2 = 0;
+        double difference = 5;
+        assertEquals(difference,DistanceFormula.findDifferenceBetweenTwoNumbers(value1,value2));
+    }
+
+    public void testSquareOfNegativeNumber(){
+        double value = -2;
+        double squareOfValue = 4;
+        assertEquals(squareOfValue,DistanceFormula.findSquareOfNumber(value));
+    }
+
+    public void testSumOfTwoNegativeNumbers(){
+        double value1 = -1;
+        double value2 = -2;
+        double sum = -3;
+        assertEquals(sum,DistanceFormula.findSumOfTwoNumbers(value1,value2));
+    }
 }
