@@ -26,7 +26,7 @@ public class TestBodyMassIndexTests
    @Test
    public void BMI_underweight()
    {
-       assertEquals("You are Underweight.\nSuggestion : Gain Weight.", BodyMassIndex.BmiDetails(16));
+       assertEquals("You are Underweight.\nSuggestion : Gain Weight.", BodyMassIndex.BmiDetails(15));
    }
    @Test
    public void BMI_overweight() 
@@ -39,9 +39,9 @@ public class TestBodyMassIndexTests
        assertEquals("You are Obese.\nSuggestion : Workout Daily.", BodyMassIndex.BmiDetails(40));
    }
    @Test
-   public void BMI_optimal () 
+   public void BMI_normal() 
    {
-       assertEquals("Your weight is Normal.\nSuggestion : Continue your Daily Routine.", BodyMassIndex.BmiDetails(20));
+       assertEquals("Your weight is Normal.\nSuggestion : Continue your Daily Routine.", BodyMassIndex.BmiDetails(22));
    }
    
 }
