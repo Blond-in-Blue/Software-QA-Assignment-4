@@ -18,23 +18,26 @@ public class EmailVerifier {
     }
 
     public Boolean verifyEmailString(){
-        if(email.isEmpty()) return false;                               //Empty String
+        Boolean verified = false;
+
+        if(email.isEmpty()) verified = false;                               //Empty String
         int atIndex = email.indexOf('@');
         int dotIndex = email.indexOf('.', atIndex);
         Pattern alphabetic = Pattern.compile("[^a-zA-Z]");              //Special char regex pattern
         String domain = email.substring(dotIndex+1,email.length());
 
         if(email.substring(atIndex+1,email.length()).contains("@"))       //Has an '@' after the first '@'
-            {return false;}
+            {verified = false;}
         else if(atIndex == 0)                                           //Lacking chars before '@'
-            {return false;}
+            {verified = false;}
         else if(atIndex + 1 == dotIndex)                                //No site String between '@' and '.'
-            {return false;}
+            {verified = false;}
         else if(domain.length() > 3 || domain.length() == 0)            //Domain following the '.' is more than 3 chars or
-            {return false;}
+            {verified = false;}
         else if(alphabetic.matcher(domain).find())                      //Domain contains special characters
-            {return false;}
+            {verified = false;}
         else
-            {return true;}
+            {verified = true;}
+        return verified;
     }
 }
