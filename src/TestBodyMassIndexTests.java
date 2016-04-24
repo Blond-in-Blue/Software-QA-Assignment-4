@@ -45,7 +45,7 @@ public class TestBodyMassIndexTests
    }
     @Test
     public void negativeWeightValue(){
-        assertEquals("Invalid Input.BMI Cannot be Negetive.",BodyMassIndex.BmiDetails(-1));
+        assertEquals("Invalid Input.BMI Cannot be Negative.",BodyMassIndex.BmiDetails(-1));
     }
    
 }

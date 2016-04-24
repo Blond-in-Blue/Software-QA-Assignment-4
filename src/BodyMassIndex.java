@@ -32,7 +32,7 @@ public class BodyMassIndex {
         bmi_desc = BmiDetails(bmi);
         System.out.println(bmi_desc);
         System.out.print("\n");
-        System.out.println ("BMI  GUIDENCE CHART.");
+        System.out.println ("BMI  GUIDANCE CHART.");
         System.out.println ("Underweight: If your Body Mass Index is less than 18.5.");
         System.out.println ("Normal     : If your Body Mass Index falls between 18.5 and 24.9.");
         System.out.println ("Overweight : If your Body Mass Index falls between 25 and 29.9.");
@@ -63,7 +63,7 @@ public class BodyMassIndex {
       }
       else if (bmi < 0)
       {
-        return "Invalid Input.BMI Cannot be Negetive.";
+        return "Invalid Input.BMI Cannot be Negative.";
     }
       else 
       return null;

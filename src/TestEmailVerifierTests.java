@@ -69,4 +69,10 @@ public class TestEmailVerifierTests extends TestCase {
         assertEquals(verified, myEmailVerifier.verifyEmailString());
     }
 
+    public void testURL(){
+        String url = "http://cse.msstate.edu";
+        EmailVerifier myEmailVerifier = new EmailVerifier(url);
+        assertFalse(myEmailVerifier.verifyEmailString());
+    }
+
 }
