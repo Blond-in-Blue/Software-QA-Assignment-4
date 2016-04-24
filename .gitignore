@@ -1,0 +1,12 @@
+# .gitignore
+# Created by Hunter Holder on 24 April 2016
+
+# ignore all XML and IML files
+*.xml
+*.iml
+
+# idea folder is hidden, and holds project structure and metadata
+.idea/
+
+# out folder is where all of the .class files go
+out/
