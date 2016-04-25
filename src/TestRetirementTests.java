@@ -52,9 +52,12 @@ public class TestRetirementTests extends TestCase
         assertEquals(false, myRetirement.getAnnualSalary());
     }
 
-    public void testProperAnualSalary()
+    public void testProperAnnualSalary()
     {
-        //For Hunter
+        int expectedSalary = 40000;
+        Retirement myRetirement = new Retirement();
+        myRetirement.annualSalary = expectedSalary;
+        assertEquals(false, myRetirement.getAnnualSalary());
     }
 
     public void testNoPercentageSaved()
