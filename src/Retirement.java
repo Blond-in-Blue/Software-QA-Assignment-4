@@ -1,33 +1,108 @@
 import java.util.Scanner;
+import java.util.jar.Pack200;
 
-/**
- * Created by Kemp on 4/19/2016.
- */
 public class Retirement {
+    public int currentAge;
+    public double annualSalary;
+    public double percentageSaved;
+    public double savingsGoal;
+    public int yearGoalMet = -1;
+    public int ageGoalMet = -1;
+    public boolean properAge = false;
+    public boolean properAnnualSalary = false;
+    public boolean properPercentageSaved = false;
+    public boolean properSavingsGoal = false;
+    public boolean properRetirementPlan = false;
 
-    public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
 
-        int currentAge;
-        double annualSalary;
-        double percentageSaved;
-        double savingsGoal;
+    public boolean getAge()
+    {
 
-        Scanner input = new Scanner(System.in);
+        if(currentAge <= 18 || currentAge >= 100)
+        {
+            properAge = false;
+        }
+        else
+        {
+            properAge = true;
+        }
 
-        System.out.print("Enter your current age: ");
-        currentAge = input.nextInt();
+        return properAge;
+    }
 
-        System.out.println("Enter your current annual salary: ");
-        annualSalary = input.nextDouble();
+    public boolean getAnnualSalary()
+    {
 
-        System.out.println("Enter the percentage of your annual salary that is saved for retirement: ");
-        percentageSaved = input.nextDouble();
+        if(annualSalary <= 20000)
+        {
+            properAnnualSalary = false;
+        }
+        else
+        {
+            properAnnualSalary = true;
+        }
+
+        return properAnnualSalary;
+    }
+
+    public boolean getPercentageSaved()
+    {
         percentageSaved = percentageSaved *2;
 
-        System.out.println("What is your retirement savings goal? ");
-        savingsGoal = input.nextDouble();
+        if(percentageSaved > 1)
+        {
+            percentageSaved = percentageSaved / 100;
+        }
 
-        
+        if(percentageSaved == 0)
+        {
+            properPercentageSaved = false;
+        }
+        else  if(percentageSaved > 0 && percentageSaved < 1)
+        {
+            properPercentageSaved = true;
+        }
+
+        return properPercentageSaved;
+    }
+
+    public boolean getSavingsGoal() {
+
+        if (savingsGoal == 0)
+        {
+            properSavingsGoal = false;
+        }
+        else
+        {
+            properSavingsGoal = true;
+        }
+
+        return properSavingsGoal;
+
+    }
+
+    public int doRetirement()
+    {
+        for(int i = 0; i < 100; i++)
+        {
+            if((annualSalary * percentageSaved * i) >= savingsGoal)
+            {
+                yearGoalMet = i+1;
+                break;
+            }
+        }
+
+        if(yearGoalMet != -1)
+        {
+            ageGoalMet = yearGoalMet + currentAge;
+        }
+        else
+        {
+            System.out.println("you will not live long enough to acquire your goal");
+        }
+
+          return ageGoalMet;
 
     }
 
