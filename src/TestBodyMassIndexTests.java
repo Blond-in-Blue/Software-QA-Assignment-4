@@ -19,7 +19,7 @@ public class TestBodyMassIndexTests
     assertTrue(true);
    }
    @Test
-   public void calculate_bmi() 
+   public void calculating_bmi() 
    {
        assertTrue(BodyMassIndex.CalcBmi(150.0,65.0)==25.0);
    }
@@ -44,7 +44,7 @@ public class TestBodyMassIndexTests
        assertEquals("Your weight is Normal.\nSuggestion : Continue your Daily Routine.", BodyMassIndex.BmiDetails(22));
    }
     @Test
-    public void negativeWeightValue(){
+    public void BMI_negativeWeightValue(){
         assertEquals("Invalid Input.BMI Cannot be Negative.",BodyMassIndex.BmiDetails(-1));
     }
    
