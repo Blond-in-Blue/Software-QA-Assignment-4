@@ -57,7 +57,7 @@ public class TestRetirementTests extends TestCase
         int expectedSalary = 40000;
         Retirement myRetirement = new Retirement();
         myRetirement.annualSalary = expectedSalary;
-        assertEquals(false, myRetirement.getAnnualSalary());
+        assertEquals(true, myRetirement.getAnnualSalary());
     }
 
     public void testNoPercentageSaved()
