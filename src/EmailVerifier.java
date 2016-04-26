@@ -18,9 +18,10 @@ public class EmailVerifier {
     }
 
     public Boolean verifyEmailString(){
-        Boolean verified = false;
+        if(email.isEmpty())
+        {return false;}                                                //Empty String
 
-        if(email.isEmpty()) verified = false;                               //Empty String
+        Boolean verified = false;
         int atIndex = email.indexOf('@');
         int dotIndex = email.indexOf('.', atIndex);
         Pattern alphabetic = Pattern.compile("[^a-zA-Z]");              //Special char regex pattern
