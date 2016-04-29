@@ -26,17 +26,10 @@ public class BodyMassIndex {
         System.out.print("Please Enter Your Height in Inches: ");
         height2 = input.nextDouble();
         height= height1+height2;
-        bmi= CalcBmi(weight,height);        
-        System.out.print("\n");
+        bmi= CalcBmi(weight,height);
         System.out.printf("Your Body Mass Index (BMI) based on the given inputs is %g.\n\n", bmi);
         bmi_desc = BmiDetails(bmi);
         System.out.println(bmi_desc);
-        System.out.print("\n");
-        System.out.println ("BMI  GUIDANCE CHART.");
-        System.out.println ("Underweight: If your Body Mass Index is less than 18.5.");
-        System.out.println ("Normal     : If your Body Mass Index falls between 18.5 and 24.9.");
-        System.out.println ("Overweight : If your Body Mass Index falls between 25 and 29.9.");
-        System.out.println ("Obese      : If your Body Mass Index is 30 or greater.");
     }
     static double CalcBmi(double weight,double height)
     {
