@@ -8,11 +8,7 @@ import java.util.*;
 
 public class TestBodyMassIndexTests 
 {
-   BodyMassIndex bmi;
-   public void setUp()
-   {
-    bmi = new BodyMassIndex();
-   }
+   BodyMassIndex bmi = new BodyMassIndex();
    @Test 
    public void SampleTestcase()
    {
