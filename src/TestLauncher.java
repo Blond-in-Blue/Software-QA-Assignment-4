@@ -4,8 +4,9 @@ import org.junit.runner.notification.Failure;
 
 /**
  * Created by Kemp on 4/19/2016.
+ * Launcher for testing.
  */
-public class Launcher {
+public class TestLauncher {
     public static void main(String[] args) {
         System.out.println("------------------------");
 
@@ -34,6 +35,13 @@ public class Launcher {
         for(Failure failure : resultRetirement.getFailures())
             System.out.println(failure.toString());
         System.out.println("RetirementTests: "+resultRetirement.wasSuccessful());
+
+        System.out.println("------------------------");
+
+        Result resultApplication = JUnitCore.runClasses(TestApplicationTests.class);
+        for(Failure failure : resultApplication.getFailures())
+            System.out.println(failure.toString());
+        System.out.println("ApplicationTests: "+resultApplication.wasSuccessful());
 
         System.out.println("------------------------");
     }

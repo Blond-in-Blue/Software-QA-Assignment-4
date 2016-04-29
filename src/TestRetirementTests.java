@@ -2,6 +2,9 @@ import junit.framework.TestCase;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 public class TestRetirementTests extends TestCase
 {
     public void testNoCurrentAge()
@@ -100,14 +103,13 @@ public class TestRetirementTests extends TestCase
         assertEquals(true, myRetirement.getSavingsGoal());
     }
 
-    public void testRetiremntGoalReached()
+    public void testRetirementGoalReached()
     {
         Retirement myRetirement = new Retirement();
         myRetirement.currentAge = 21;
         myRetirement.annualSalary = 59000;
         myRetirement.percentageSaved = 0.06;
         myRetirement.savingsGoal = 100000;
-
         myRetirement.doRetirement();
         assertTrue(myRetirement.ageGoalMet < 100);
     }
@@ -119,7 +121,6 @@ public class TestRetirementTests extends TestCase
         myRetirement.annualSalary = 59000;
         myRetirement.percentageSaved = 0.01;
         myRetirement.savingsGoal = 1000000;
-
         myRetirement.doRetirement();
         assertEquals(myRetirement.ageGoalMet , -1);
     }
