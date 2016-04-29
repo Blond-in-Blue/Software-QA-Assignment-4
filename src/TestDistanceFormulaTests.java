@@ -64,11 +64,8 @@ public class TestDistanceFormulaTests extends TestCase {
         double y2 = 1;
         DistanceFormula myDistanceFormula = new DistanceFormula(x1,x2,y1,y2);
         double distance = 0.2;
-        boolean closeInApproximation = true;
         double myDistance = myDistanceFormula.findDistanceBetweenPoints();
-        if(Math.abs(Math.abs(myDistance) - Math.abs(distance)) > precision)
-            closeInApproximation = false;
-        assertTrue(closeInApproximation);
+        assertFalse(Math.abs(Math.abs(myDistance) - Math.abs(distance)) > precision);
     }
 
     public void testDifferenceBetweenTwoNumbers(){

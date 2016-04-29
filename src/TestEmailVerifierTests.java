@@ -75,4 +75,10 @@ public class TestEmailVerifierTests extends TestCase {
         assertFalse(myEmailVerifier.verifyEmailString());
     }
 
+    public void testBlankString(){
+        String url = "";
+        EmailVerifier myEmailVerifier = new EmailVerifier(url);
+        assertFalse(myEmailVerifier.verifyEmailString());
+    }
+
 }
