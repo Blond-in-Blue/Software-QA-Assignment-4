@@ -1,4 +1,5 @@
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -12,34 +13,51 @@ public class Application {
     public String errorString = "Error in choice, please reenter choice.";
     public int userChoice;
     public boolean exitApp = false;
+    public PrintStream myPrintStream;
+    public Scanner userInput;
+
+    public Application(PrintStream newStream, InputStream inputStream){
+        myPrintStream = newStream;
+        this.userInput = new Scanner(inputStream);
+    }
+
+    public Application(PrintStream newStream){
+        this(newStream,System.in);
+    }
+
+    public Application(){
+        this(System.out,System.in);
+    }
 
     public static void main(String[] args) {
-        Scanner userInput = new Scanner(System.in);
-        Application myApplication = new Application();
-        String askUserForChoice = "Enter choice >> ";
-        while(!myApplication.exitApp){
-            if(myApplication.errorInChoice) { //if error display error message
-                System.out.println(myApplication.errorString);
-                myApplication.errorInChoice = false; //reset error message
+        Application myApp = new Application();
+        myApp.startApp();
+    }
+
+    public void startApp(){String askUserForChoice = "Enter choice >> ";
+        while(!this.exitApp){
+            if(this.errorInChoice) { //if error display error message
+                this.myPrintStream.println(this.errorString);
+                this.errorInChoice = false; //reset error message
             }
-            printMenuOptions(); //output Menu to User
+            this.printMenuOptions(); //output Menu to User
             String myUserInput = getUserInput(userInput,askUserForChoice);
-            myApplication.verifyUserInputIsInteger(myUserInput);  //verify input is integer
-            if(!myApplication.errorInChoice)    //send input to menuOptionHandler
-                myApplication.menuOptionHandler(myApplication.userChoice);
+            this.verifyUserInputIsInteger(myUserInput);  //verify input is integer
+            if(!this.errorInChoice)    //send input to menuOptionHandler
+                this.menuOptionHandler(this.userChoice);
         }
     }
 
     //request input from user and return user's input
-    public static String getUserInput(Scanner userInput, String message){
-        System.out.println(message);
+    public String getUserInput(Scanner userInput, String message){
+        this.myPrintStream.println(message);
         return userInput.nextLine();
     }
 
     //verify user input can be converted into an integer
     public void verifyUserInputIsInteger(String userInput){
         if(isInteger(userInput))
-            userChoice = Integer.parseInt(userInput);
+            this.userChoice = Integer.parseInt(userInput);
         else
             this.errorInChoice = true;
     }
@@ -53,28 +71,28 @@ public class Application {
         return true;
     }
 
-    public static void printMenuOptions(){
-        System.out.println("1. Body Mass Index");
-        System.out.println("2. Distance Formula");
-        System.out.println("3. Retirement");
-        System.out.println("4. Email Verifier");
-        System.out.println("5. Exit");
+    public void printMenuOptions(){
+        this.myPrintStream.println("1. Body Mass Index");
+        this.myPrintStream.println("2. Distance Formula");
+        this.myPrintStream.println("3. Retirement");
+        this.myPrintStream.println("4. Email Verifier");
+        this.myPrintStream.println("5. Exit");
     }
 
     public void menuOptionHandler(int option){
         //act on option given
         switch(option){
             case 1:
-                bodyMassIndexMenu();
+                this.bodyMassIndexMenu();
                 break;
             case 2:
-                distanceFormulaMenu();
+                this.distanceFormulaMenu();
                 break;
             case 3:
-                retirementMenu();
+                this.retirementMenu();
                 break;
             case 4:
-                emailVerifierMenu();
+                this.emailVerifierMenu();
                 break;
             case 5:
                 this.exitApp = true;
@@ -84,23 +102,22 @@ public class Application {
         }
     }
 
-    public static void bodyMassIndexMenu(){
-        System.out.println("Welcome to Body Mass Index Menu");
-
+    public void bodyMassIndexMenu(){
+        this.myPrintStream.println("Welcome to Body Mass Index Menu");
     }
 
     /**Menu to Run distance formula*/
-    public static void distanceFormulaMenu(){
-        Scanner userInput = new Scanner(System.in);
+    public void distanceFormulaMenu(){
+//        this.userInput = new Scanner(System.in);
         boolean errorInValue = false;
         String errorMessage = "Error in input, please retry.";
         while (true) {
             if(errorInValue) {
-                System.out.println(errorMessage);
+                this.myPrintStream.println(errorMessage);
                 errorInValue = false;   //reset error
             }
-            System.out.println("Welcome to Distance Formula Menu");
-            System.out.println("Would you like to find Distance between two points? Y/N");
+            this.myPrintStream.println("Welcome to Distance Formula Menu");
+            this.myPrintStream.println("Would you like to find Distance between two points? Y/N");
             String userDecision = getUserInput(userInput,">> ");
             if(userDecision.equals("n") || userDecision.equals("N"))
                 break;
@@ -142,19 +159,19 @@ public class Application {
                 if(!errorInValue) {
                     DistanceFormula myDistanceFormula = new DistanceFormula(myX1, myX2, myY1, myY2);
                     double myDistance = myDistanceFormula.findDistanceBetweenPoints();
-                    System.out.println("Distance is: " + myDistance);
+                    this.myPrintStream.println("Distance is: " + myDistance);
                 }
             }
         }
     }
 
-    public static void retirementMenu(){
-        System.out.println("Welcome to Retirement Menu");
+    public void retirementMenu(){
+        this.myPrintStream.println("Welcome to Retirement Menu");
 
     }
 
-    public static void emailVerifierMenu(){
-        System.out.println("Welcome to Email Verifier Menu");
+    public void emailVerifierMenu(){
+        this.myPrintStream.println("Welcome to Email Verifier Menu");
 
     }
 }
