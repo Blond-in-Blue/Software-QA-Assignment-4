@@ -101,9 +101,55 @@ public class Application {
                 this.errorInChoice = true;
         }
     }
-
-    public void bodyMassIndexMenu(){
-        this.myPrintStream.println("Welcome to Body Mass Index Menu");
+ /**Menu to Run Body Mass Index*/
+    public static void bodyMassIndexMenu(){
+      Scanner userInput = new Scanner(System.in);
+        boolean errorInValue = false;
+        String errorMessage = "Error in input, please retry.";
+        while (true) {
+            if(errorInValue) {
+                System.out.println(errorMessage);
+                errorInValue = false;   //reset error
+            }
+        System.out.println("Welcome to Body Mass Index Menu");
+        System.out.println("Would you like to find the BMI? Y/N");
+            String userDecision = getUserInput(userInput,">> ");
+            if(userDecision.equals("n") || userDecision.equals("N"))
+                break;
+            else if(userDecision.equals("y") || userDecision.equals("Y")) {
+              double wgt=0.0;
+              double height1=0.0;
+              double height2 =0.0;
+              if(!errorInValue) {
+                    String wg = getUserInput(userInput, "Enter weight >> ");
+                    if (isInteger(wg)) {
+                        wgt = Double.parseDouble(wg);
+                    } else
+                        errorInValue = true;
+                }
+                if(!errorInValue) {
+                    String h1 = getUserInput(userInput, "Enter height in feet >> ");
+                    if (isInteger(h1)) {
+                        height1 = Double.parseDouble(h1);
+                    } else
+                        errorInValue = true;
+                }
+                 if(!errorInValue) {
+                    String h2 = getUserInput(userInput, "Enter height in inches >> ");
+                    if (isInteger(h2)) {
+                        height2 = Double.parseDouble(h2);
+                    } else
+                        errorInValue = true;
+                }
+                if(!errorInValue) {
+                    BodyMassIndex mybmi = new BodyMassIndex(height1,height2,wgt);
+                    double bmi = mybmi.CalcBmi();
+                    String cat = mybmi.BmiDetails(bmi);
+                    System.out.println("BMI is: " + bmi);
+                    System.out.println("BMI Category is :" + cat);
+                }
+            }  
+        }
     }
 
     /**Menu to Run distance formula*/
