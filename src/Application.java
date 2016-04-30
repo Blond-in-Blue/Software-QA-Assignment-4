@@ -118,21 +118,21 @@ public class Application {
               double height1=0.0;
               double height2 =0.0;
               if(!errorInValue) {
-                    String wg = getUserInput(userInput, "Enter weight >> ");
+                    String wg = getUserInput(userInput, "Enter your weight in pounds >> ");
                     if (isInteger(wg)) {
                         wgt = Double.parseDouble(wg);
                     } else
                         errorInValue = true;
                 }
                 if(!errorInValue) {
-                    String h1 = getUserInput(userInput, "Enter height in feet >> ");
+                    String h1 = getUserInput(userInput, "Enter your height in feet >> ");
                     if (isInteger(h1)) {
                         height1 = Double.parseDouble(h1);
                     } else
                         errorInValue = true;
                 }
                  if(!errorInValue) {
-                    String h2 = getUserInput(userInput, "Enter height in inches >> ");
+                    String h2 = getUserInput(userInput, "Enter your height in inches >> ");
                     if (isInteger(h2)) {
                         height2 = Double.parseDouble(h2);
                     } else
