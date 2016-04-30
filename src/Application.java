@@ -102,7 +102,7 @@ public class Application {
         }
     }
  /**Menu to Run Body Mass Index*/
-    public static void bodyMassIndexMenu(){
+    public void bodyMassIndexMenu(){
       Scanner userInput = new Scanner(System.in);
         boolean errorInValue = false;
         String errorMessage = "Error in input, please retry.";
