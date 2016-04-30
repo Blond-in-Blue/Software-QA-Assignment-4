@@ -105,7 +105,7 @@ public class Application {
         String errorMessage = "Error in input, please retry.";
         while (true) {
             if(errorInValue) {
-                System.out.println(errorMessage);
+                this.myPrintStream.println(errorMessage);
                 errorInValue = false;   //reset error
             }
             this.myPrintStream.println("Welcome to Body Mass Index Menu");
