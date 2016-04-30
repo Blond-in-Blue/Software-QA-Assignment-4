@@ -182,7 +182,37 @@ public class TestApplicationTests extends TestCase {
         myApp.distanceFormulaMenu();
         assertTrue(myBAOS.toString().contains("Error in input, please retry."));
     }
-
+  
+     public void testBMIMenuAllCorrectValues(){
+        String myUserInputString = "Y"+"\n150"+"\n5"+"\n5"+"\nN";
+        InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
+        Application myApp = new Application(myOut,myIn);
+        myApp.bodyMassIndexMenu();
+        assertTrue(myBAOS.toString().contains("BMI is: 25.0"));
+        assertTrue(myBAOS.toString().contains("BMI Category is :You are Overweight.\n" +
+                "Suggestion : Walk Daily."));
+     }
+    public void testBMIMenuAllIncorrectweight(){
+        String myUserInputString = "Y"+"\nA"+"\nN";
+        InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
+        Application myApp = new Application(myOut,myIn);
+        myApp.bodyMassIndexMenu();
+        assertTrue(myBAOS.toString().contains("Error in input, please retry."));
+    }
+    public void testBMIMenuAllIncorrectheightinfeet(){
+        String myUserInputString = "Y"+"\n6"+"\nA"+"\nN";
+        InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
+        Application myApp = new Application(myOut,myIn);
+        myApp.bodyMassIndexMenu();
+        assertTrue(myBAOS.toString().contains("Error in input, please retry."));
+    }
+    public void testBMIMenuAllIncorrectheightininches(){
+        String myUserInputString = "Y"+"\n140"+"\n5"+"\nA"+"\nN";
+        InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
+        Application myApp = new Application(myOut,myIn);
+        myApp.bodyMassIndexMenu();
+        assertTrue(myBAOS.toString().contains("Error in input, please retry."));
+    }
     public void testEmailMenu(){
 
     }
