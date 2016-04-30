@@ -122,17 +122,26 @@ public class TestApplicationTests extends TestCase {
         InputStream myIn = new ByteArrayInputStream("Hello".getBytes());
         String messageToPass = "";
         Application myApp = new Application(myOut,myIn);
-        String userInput = myApp.getUserInput(new Scanner(myIn),messageToPass);
+        String userInput = myApp.getUserInput(myApp.userInput,messageToPass);
         assertEquals("Hello",userInput);
     }
 
+    /**Test cases for isInteger Method*/
     public void testUserInputIsIntegerPassCase(){
         assertTrue(Application.isInteger("1"));
     }
-
     public void testUserInputIsIntegerFailCase(){
         assertFalse(Application.isInteger("A"));
     }
+
+    /**Test cases for isDouble Method*/
+    public void testUserInputIsDoublePassCase(){
+        assertTrue(Application.isDouble("1.0"));
+    }
+    public void testUserInputIsDoubleFailCase(){
+        assertFalse(Application.isDouble("A"));
+    }
+
     /**Test verify user input*/
     public void testVerifyUserInputWithInteger(){
         Application myApp = new Application();
@@ -182,8 +191,9 @@ public class TestApplicationTests extends TestCase {
         myApp.distanceFormulaMenu();
         assertTrue(myBAOS.toString().contains("Error in input, please retry."));
     }
-  
-     public void testBMIMenuAllCorrectValues(){
+
+    /**Test BMI Menu*/
+    public void testBMIMenuAllCorrectValues(){
         String myUserInputString = "Y"+"\n150"+"\n5"+"\n5"+"\nN";
         InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
         Application myApp = new Application(myOut,myIn);
@@ -191,22 +201,22 @@ public class TestApplicationTests extends TestCase {
         assertTrue(myBAOS.toString().contains("BMI is: 25.0"));
         assertTrue(myBAOS.toString().contains("BMI Category is :You are Overweight.\n" +
                 "Suggestion : Walk Daily."));
-     }
-    public void testBMIMenuAllIncorrectweight(){
+    }
+    public void testBMIMenuAllIncorrectWeight(){
         String myUserInputString = "Y"+"\nA"+"\nN";
         InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
         Application myApp = new Application(myOut,myIn);
         myApp.bodyMassIndexMenu();
         assertTrue(myBAOS.toString().contains("Error in input, please retry."));
     }
-    public void testBMIMenuAllIncorrectheightinfeet(){
+    public void testBMIMenuAllIncorrectHeightInFeet(){
         String myUserInputString = "Y"+"\n6"+"\nA"+"\nN";
         InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
         Application myApp = new Application(myOut,myIn);
         myApp.bodyMassIndexMenu();
         assertTrue(myBAOS.toString().contains("Error in input, please retry."));
     }
-    public void testBMIMenuAllIncorrectheightininches(){
+    public void testBMIMenuAllIncorrectHeightInInches(){
         String myUserInputString = "Y"+"\n140"+"\n5"+"\nA"+"\nN";
         InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
         Application myApp = new Application(myOut,myIn);

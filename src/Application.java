@@ -69,6 +69,15 @@ public class Application {
         return true;
     }
 
+    public static boolean isDouble(String myString){
+        try{
+            double myDouble = Double.parseDouble(myString);
+        } catch(Exception e){
+            return false;
+        }
+        return true;
+    }
+
     public void printMenuOptions(){
         this.myPrintStream.println("1. Body Mass Index");
         this.myPrintStream.println("2. Distance Formula");
@@ -119,21 +128,21 @@ public class Application {
               double height2 =0.0;
               if(!errorInValue) {
                     String wg = getUserInput(userInput, "Enter your weight in pounds >> ");
-                    if (isInteger(wg)) {
+                    if (isDouble(wg)) {
                         wgt = Double.parseDouble(wg);
                     } else
                         errorInValue = true;
                 }
                 if(!errorInValue) {
                     String h1 = getUserInput(userInput, "Enter your height in feet >> ");
-                    if (isInteger(h1)) {
+                    if (isDouble(h1)) {
                         height1 = Double.parseDouble(h1);
                     } else
                         errorInValue = true;
                 }
                  if(!errorInValue) {
                     String h2 = getUserInput(userInput, "Enter your height in inches >> ");
-                    if (isInteger(h2)) {
+                    if (isDouble(h2)) {
                         height2 = Double.parseDouble(h2);
                     } else
                         errorInValue = true;
