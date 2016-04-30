@@ -48,12 +48,9 @@ public class BodyMassIndex
         {
             return "You are Obese.\nSuggestion : Workout Daily.";
         }
-        else if (bmi < 0)
+        else
         {
             return "Invalid Input.BMI Cannot be Negetive.";
-        }
-        else {
-            return null;
         }
     }
 }
