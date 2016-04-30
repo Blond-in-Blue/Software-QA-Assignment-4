@@ -138,21 +138,21 @@ public class Application {
                 if(!errorInValue) {
                     String y1 = getUserInput(userInput, "Enter 'y' of first coordinate >> ");
                     if (isInteger(y1)) {
-                        myX1 = Integer.parseInt(y1);
+                        myY1 = Integer.parseInt(y1);
                     } else
                         errorInValue = true;
                 }
                 if(!errorInValue) {
                     String x2 = getUserInput(userInput, "Enter 'x' of second coordinate >> ");
                     if (isInteger(x2)) {
-                        myX1 = Integer.parseInt(x2);
+                        myX2 = Integer.parseInt(x2);
                     } else
                         errorInValue = true;
                 }
                 if(!errorInValue) {
                     String y2 = getUserInput(userInput, "Enter 'y' of second coordinate >> ");
                     if (isInteger(y2)) {
-                        myX1 = Integer.parseInt(y2);
+                        myY2 = Integer.parseInt(y2);
                     } else
                         errorInValue = true;
                 }
