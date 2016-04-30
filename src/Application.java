@@ -1,6 +1,4 @@
-import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -103,7 +101,6 @@ public class Application {
     }
  /**Menu to Run Body Mass Index*/
     public void bodyMassIndexMenu(){
-      Scanner userInput = new Scanner(System.in);
         boolean errorInValue = false;
         String errorMessage = "Error in input, please retry.";
         while (true) {
@@ -111,8 +108,8 @@ public class Application {
                 System.out.println(errorMessage);
                 errorInValue = false;   //reset error
             }
-        System.out.println("Welcome to Body Mass Index Menu");
-        System.out.println("Would you like to find the BMI? Y/N");
+            this.myPrintStream.println("Welcome to Body Mass Index Menu");
+            this.myPrintStream.println("Would you like to find the BMI? Y/N");
             String userDecision = getUserInput(userInput,">> ");
             if(userDecision.equals("n") || userDecision.equals("N"))
                 break;
@@ -145,8 +142,8 @@ public class Application {
                     BodyMassIndex mybmi = new BodyMassIndex(height1,height2,wgt);
                     double bmi = mybmi.CalcBmi();
                     String cat = mybmi.BmiDetails(bmi);
-                    System.out.println("BMI is: " + bmi);
-                    System.out.println("BMI Category is :" + cat);
+                    this.myPrintStream.println("BMI is: " + bmi);
+                    this.myPrintStream.println("BMI Category is :" + cat);
                 }
             }  
         }
@@ -154,7 +151,6 @@ public class Application {
 
     /**Menu to Run distance formula*/
     public void distanceFormulaMenu(){
-//        this.userInput = new Scanner(System.in);
         boolean errorInValue = false;
         String errorMessage = "Error in input, please retry.";
         while (true) {

@@ -27,6 +27,7 @@ public class TestApplicationTests extends TestCase {
         myBAOS.close();
     }
 
+    /**Testing menu choices*/
     public void testMain(){
         String myUserInputString = "5";
         InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
@@ -36,7 +37,6 @@ public class TestApplicationTests extends TestCase {
         String toContain = "5. Exit";
         assertTrue(myBAOS.toString().contains(toContain));
     }
-
     public void testMenuExitChoice(){
         String myUserInputString = "5";
         InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
@@ -54,14 +54,17 @@ public class TestApplicationTests extends TestCase {
         assertTrue(myBAOS.toString().contains(toContain));
     }
 
+    /**Testing Menu Select BMI*/
     public void testMenuSelectBMI(){
-        String myUserInputString = "1"+"\n5";
+        String myUserInputString = "1"+"\nN"+"\n5";
         InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
         Application myApp = new Application(myOut,myIn);
         myApp.startApp();
         String toContain = "Welcome to Body Mass Index Menu";
         assertTrue(myBAOS.toString().contains(toContain));
     }
+
+    /**Testing Menu Select Distance Formula*/
     public void testMenuSelectDistanceFormula(){
         String myUserInputString = "2"+"\nN"+"\n5";
         InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
@@ -70,6 +73,7 @@ public class TestApplicationTests extends TestCase {
         String toContain = "Welcome to Distance Formula Menu";
         assertTrue(myBAOS.toString().contains(toContain));
     }
+    /**Testing Menu Select Retirement*/
     public void testMenuSelectRetirement(){
         String myUserInputString = "3"+"\n5";
         InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
@@ -78,6 +82,7 @@ public class TestApplicationTests extends TestCase {
         String toContain = "Welcome to Retirement Menu";
         assertTrue(myBAOS.toString().contains(toContain));
     }
+    /**Testing Menu Select Email Verifier*/
     public void testMenuSelectEmailVerifier(){
         String myUserInputString = "4"+"\n5";
         InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
@@ -86,21 +91,22 @@ public class TestApplicationTests extends TestCase {
         String toContain = "Welcome to Email Verifier Menu";
         assertTrue(myBAOS.toString().contains(toContain));
     }
-
+    /**Testing Incorrect Menu Value*/
     public void testMenuOptionWithIncorrectValue(){
         int menuOption = 0;
-        Application myApp = new Application();
+        Application myApp = new Application(myOut);
         myApp.menuOptionHandler(menuOption);
         assertTrue(myApp.errorInChoice);
     }
-
+    /**Testing Correct Menu Value*/
     public void testMenuOptionWithCorrectValue(){
+        String myUserInputString = "N"+"\n5";
+        InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
         int menuOption = 1;
-        Application myApp = new Application(myOut);
+        Application myApp = new Application(myOut,myIn);
         myApp.menuOptionHandler(menuOption);
         assertFalse(myApp.errorInChoice);
     }
-
 
     //http://stackoverflow.com/questions/6415728/junit-testing-with-simulated-user-input
     public void testGetUserInputWithPlainNumberOne(){
@@ -114,7 +120,6 @@ public class TestApplicationTests extends TestCase {
 
     public void testGetUserInputWithWord(){
         InputStream myIn = new ByteArrayInputStream("Hello".getBytes());
-        System.setIn(myIn);
         String messageToPass = "";
         Application myApp = new Application(myOut,myIn);
         String userInput = myApp.getUserInput(new Scanner(myIn),messageToPass);
@@ -128,26 +133,26 @@ public class TestApplicationTests extends TestCase {
     public void testUserInputIsIntegerFailCase(){
         assertFalse(Application.isInteger("A"));
     }
-
+    /**Test verify user input*/
     public void testVerifyUserInputWithInteger(){
         Application myApp = new Application();
         myApp.verifyUserInputIsInteger("1");
         assertFalse(myApp.errorInChoice);
         assertEquals(1,myApp.userChoice);
     }
-
     public void testVerifyUserInputWithLetter(){
         Application myApp = new Application();
         myApp.verifyUserInputIsInteger("A");
         assertTrue(myApp.errorInChoice);
     }
 
+    /**Test Distance Formula Menu*/
     public void testDistanceMenuAllCorrectValues(){
-        String myUserInputString = "Y"+"\n1"+"\n1"+"\n2"+"\n2"+"\nN";
+        String myUserInputString = "Y"+"\n1"+"\n1"+"\n1"+"\n2"+"\nN";
         InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
         Application myApp = new Application(myOut,myIn);
         myApp.distanceFormulaMenu();
-        assertTrue(myBAOS.toString().contains("Distance is: 2.0"));
+        assertTrue(myBAOS.toString().contains("Distance is: 1.0"));
     }
     public void testDistanceMenuAllIncorrectX1(){
         String myUserInputString = "Y"+"\nA"+"\nN";
@@ -176,11 +181,6 @@ public class TestApplicationTests extends TestCase {
         Application myApp = new Application(myOut,myIn);
         myApp.distanceFormulaMenu();
         assertTrue(myBAOS.toString().contains("Error in input, please retry."));
-    }
-
-
-    public void testBMIMenu(){
-
     }
 
     public void testEmailMenu(){
