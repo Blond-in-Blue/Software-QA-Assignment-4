@@ -217,7 +217,62 @@ public class Application {
     }
 
     public void retirementMenu(){
-        this.myPrintStream.println("Welcome to Retirement Menu");
+        boolean errorInValue = false;
+        String errorMessage = "Error in input, please retry.";
+        while (true) {
+            if(errorInValue) {
+                this.myPrintStream.println(errorMessage);
+                errorInValue = false;   //reset error
+            }
+            this.myPrintStream.println("Welcome to Retirement Menu");
+            this.myPrintStream.println("Would you like to determine retirement age? Y/N");
+            String userDecision = getUserInput(userInput,">> ");
+            if(userDecision.equals("n") || userDecision.equals("N"))
+                break;
+            else if(userDecision.equals("y") || userDecision.equals("Y")) {
+                int currentAge = 0;
+                double annualSalary = 0;
+                double percentageSaved = 0;
+                double desiredSavingsGoal = 0;
+                if(!errorInValue){
+                    String userCurrentAge = getUserInput(userInput, "Enter current age >> ");
+                    if (isInteger(userCurrentAge)){
+                        currentAge = Integer.parseInt(userCurrentAge);
+                    } else
+                        errorInValue = true;
+                }
+                if(!errorInValue){
+                    String userAnnualSalary = getUserInput(userInput, "Enter annual salary >> ");
+                    if (isDouble(userAnnualSalary)){
+                        annualSalary = Double.parseDouble(userAnnualSalary);
+                    } else
+                        errorInValue = true;
+                }
+                if(!errorInValue){
+                    String userPercentageSaved = getUserInput(userInput, "Enter percentage saved >> ");
+                    if(isDouble(userPercentageSaved)){
+                        percentageSaved = Double.parseDouble(userPercentageSaved);
+                    } else
+                        errorInValue = true;
+                }
+                if(!errorInValue){
+                    String userDesiredSavingsGoal = getUserInput(userInput, "Enter desired savings goal >> ");
+                    if(isDouble(userDesiredSavingsGoal)){
+                        desiredSavingsGoal = Double.parseDouble(userDesiredSavingsGoal);
+                    } else
+                        errorInValue = true;
+                }
+                if(!errorInValue) {
+                    Retirement myRetirement = new Retirement();
+                    myRetirement.annualSalary = annualSalary;
+                    myRetirement.currentAge = currentAge;
+                    myRetirement.percentageSaved = percentageSaved;
+                    myRetirement.savingsGoal = desiredSavingsGoal;
+                    myRetirement.doRetirement();
+                    this.myPrintStream.println("Retirement Age is: "+myRetirement.ageGoalMet);
+                }
+            }
+        }
     }
 
     public void emailVerifierMenu(){

@@ -1,5 +1,3 @@
-import java.util.Scanner;
-import java.util.jar.Pack200;
 
 public class Retirement {
     public int currentAge;
@@ -12,9 +10,7 @@ public class Retirement {
     public boolean properAnnualSalary = false;
     public boolean properPercentageSaved = false;
     public boolean properSavingsGoal = false;
-    public boolean properRetirementPlan = false;
 
-    Scanner input = new Scanner(System.in);
 
     public boolean getAge()
     {

@@ -75,7 +75,7 @@ public class TestApplicationTests extends TestCase {
     }
     /**Testing Menu Select Retirement*/
     public void testMenuSelectRetirement(){
-        String myUserInputString = "3"+"\n5";
+        String myUserInputString = "3"+"\nN"+"\n5";
         InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
         Application myApp = new Application(myOut,myIn);
         myApp.startApp();
@@ -245,8 +245,40 @@ public class TestApplicationTests extends TestCase {
         myApp.emailVerifierMenu();
         assertTrue(myBAOS.toString().contains("Email given is not valid."));
     }
-
-    public void testRetirementMenu(){
-
+    /**Test Retirement Menu*/
+    public void testRetirementMenuCorrectEntry(){
+        String myUserInputString = "Y"+"\n25"+"\n10000"+"\n0.1"+"\n10000"+"\nN";
+        InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
+        Application myApp = new Application(myOut,myIn);
+        myApp.retirementMenu();
+        assertTrue(myBAOS.toString().contains("Retirement Age is: 36"));
+    }
+    public void testRetirementMenuIncorrectCurrentAge(){
+        String myUserInputString = "Y"+"\nA"+"\nN";
+        InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
+        Application myApp = new Application(myOut,myIn);
+        myApp.retirementMenu();
+        assertTrue(myBAOS.toString().contains("Error in input, please retry."));
+    }
+    public void testRetirementMenuIncorrectAnnualSalary(){
+        String myUserInputString = "Y"+"\n25"+"\nA"+"\nN";
+        InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
+        Application myApp = new Application(myOut,myIn);
+        myApp.retirementMenu();
+        assertTrue(myBAOS.toString().contains("Error in input, please retry."));
+    }
+    public void testRetirementMenuIncorrectPercentageSaved(){
+        String myUserInputString = "Y"+"\n25"+"\n10000"+"\nA"+"\nN";
+        InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
+        Application myApp = new Application(myOut,myIn);
+        myApp.retirementMenu();
+        assertTrue(myBAOS.toString().contains("Error in input, please retry."));
+    }
+    public void testRetirementMenuIncorrectDesiredSavingsGoal(){
+        String myUserInputString = "Y"+"\n25"+"\n10000"+"\n0.1"+"\nA"+"\nN";
+        InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
+        Application myApp = new Application(myOut,myIn);
+        myApp.retirementMenu();
+        assertTrue(myBAOS.toString().contains("Error in input, please retry."));
     }
 }
