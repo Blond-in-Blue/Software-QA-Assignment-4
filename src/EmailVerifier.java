@@ -20,6 +20,8 @@ public class EmailVerifier {
     public Boolean verifyEmailString(){
         if(email.isEmpty())
         {return false;}                                                //Empty String
+        if(email.length() < 8)                                      //Email must be at least 7 characters
+            return false;                                           //x@x.xxx
 
         Boolean verified = false;
         int atIndex = email.indexOf('@');

@@ -84,7 +84,7 @@ public class TestApplicationTests extends TestCase {
     }
     /**Testing Menu Select Email Verifier*/
     public void testMenuSelectEmailVerifier(){
-        String myUserInputString = "4"+"\n5";
+        String myUserInputString = "4"+"\nN"+"\n5";
         InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
         Application myApp = new Application(myOut,myIn);
         myApp.startApp();
@@ -223,8 +223,27 @@ public class TestApplicationTests extends TestCase {
         myApp.bodyMassIndexMenu();
         assertTrue(myBAOS.toString().contains("Error in input, please retry."));
     }
-    public void testEmailMenu(){
-
+    /**Test Email Menu*/
+    public void testEmailMenuCorrectEntry(){
+        String myUserInputString = "Y"+"\nA@gmail.com"+"\nN";
+        InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
+        Application myApp = new Application(myOut,myIn);
+        myApp.emailVerifierMenu();
+        assertTrue(myBAOS.toString().contains("Email given is valid."));
+    }
+    public void testEmailMenuIncorrectEntry(){
+        String myUserInputString = "Y"+"\nA"+"\nN";
+        InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
+        Application myApp = new Application(myOut,myIn);
+        myApp.emailVerifierMenu();
+        assertTrue(myBAOS.toString().contains("Email given is not valid."));
+    }
+    public void testEmailMenuIncorrectEntry2(){
+        String myUserInputString = "Y"+"\n "+"\nN";
+        InputStream myIn = new ByteArrayInputStream(myUserInputString.getBytes());
+        Application myApp = new Application(myOut,myIn);
+        myApp.emailVerifierMenu();
+        assertTrue(myBAOS.toString().contains("Email given is not valid."));
     }
 
     public void testRetirementMenu(){

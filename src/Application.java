@@ -218,11 +218,23 @@ public class Application {
 
     public void retirementMenu(){
         this.myPrintStream.println("Welcome to Retirement Menu");
-
     }
 
     public void emailVerifierMenu(){
-        this.myPrintStream.println("Welcome to Email Verifier Menu");
-
+        while (true) {
+            this.myPrintStream.println("Welcome to Email Verifier Menu");
+            this.myPrintStream.println("Would you like to verify an email address? Y/N");
+            String userDecision = getUserInput(userInput,">> ");
+            if(userDecision.equals("n") || userDecision.equals("N"))
+                break;
+            else if(userDecision.equals("y") || userDecision.equals("Y")) {
+                String userEmail = getUserInput(userInput, "Enter email address to verify >> ");
+                EmailVerifier myEmailVerifier = new EmailVerifier(userEmail);
+                if(myEmailVerifier.verifyEmailString())
+                    this.myPrintStream.println("Email given is valid.");
+                else
+                    this.myPrintStream.println("Email given is not valid.");
+            }
+        }
     }
 }

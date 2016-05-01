@@ -81,4 +81,10 @@ public class TestEmailVerifierTests extends TestCase {
         assertFalse(myEmailVerifier.verifyEmailString());
     }
 
+    public void testSingleLetterString(){
+        String url = "A";
+        EmailVerifier myEmailVerifier = new EmailVerifier(url);
+        assertFalse(myEmailVerifier.verifyEmailString());
+    }
+
 }
