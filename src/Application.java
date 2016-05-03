@@ -134,14 +134,14 @@ public class Application {
                         errorInValue = true;
                 }
                 if(!errorInValue) {
-                    String h1 = getUserInput(userInput, "Enter your height in feet >> ");
+                    String h1 = getUserInput(userInput, "Enter your height in feet(Example:If your height is 5 feet and 10 inches, Enter 5) >> ");
                     if (isDouble(h1)) {
                         height1 = Double.parseDouble(h1);
                     } else
                         errorInValue = true;
                 }
                  if(!errorInValue) {
-                    String h2 = getUserInput(userInput, "Enter your height in inches >> ");
+                    String h2 = getUserInput(userInput, "Enter your height in inches(Example:Enter remaining 10 inches from 5 feet 10 inches) >> ");
                     if (isDouble(h2)) {
                         height2 = Double.parseDouble(h2);
                     } else
